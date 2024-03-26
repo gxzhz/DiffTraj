@@ -14,9 +14,10 @@ config = SimpleNamespace(**temp)
 
 unet = Guide_UNet(config).cuda()
 # load the model
-prePath = 'C:/Users/Rico/PycharmProjects/DiffTraj'
+prePath = '/home/abc/tcx/DiffTraj-mian/DiffTraj'
 unet.load_state_dict(
-    torch.load(prePath + '/DiffTraj/Chengdu_steps=500_len=10_0.05_bs=1024/models/03-25-12-24-03/unet_200.pt'))
+    torch.load('./DiffTraj/Wuhan_steps=500_len=200_0.05_bs=64/models/03-26-16-31-38/unet_200.pt'))
+
 # %%
 n_steps = config.diffusion.num_diffusion_timesteps
 beta = torch.linspace(config.diffusion.beta_start,
@@ -32,7 +33,7 @@ seq = range(0, n_steps, skip)
 
 # load head information for guide trajectory generation
 batchsize = 500
-head = np.load(prePath + '/dataset/normalized/normalized_head_50m.npy',
+head = np.load('./dataset/normalized_head_50m.npy',
                allow_pickle=True)
 head = torch.from_numpy(head).float()
 dataloader = DataLoader(head, batch_size=batchsize, shuffle=True, num_workers=0)
@@ -59,9 +60,9 @@ for i in tqdm(range(1)):
     lengths = lengths.int()
     tes = head[:,:6].numpy()
     Gen_head.extend((tes*hstd+hmean))
-    head = head
+    head = head.cuda()
     # Start with random noise
-    x = torch.randn(batchsize, 2, config.data.traj_length)
+    x = torch.randn(batchsize, 2, config.data.traj_length).cuda()
     ims = []
     n = x.size(0)
     seq_next = [-1] + list(seq[:-1])
