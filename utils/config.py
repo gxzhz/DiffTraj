@@ -32,7 +32,7 @@ args = {
         'num_diffusion_timesteps': 500,
     },
     'training': {
-        'batch_size': 1024,
+        'batch_size': 64,
         'n_epochs': 200,
         'n_iters': 5000000,
         'snapshot_freq': 5000,
