@@ -1,8 +1,8 @@
 args = {
     'data': {
-        'dataset': 'Chengdu',
-        'traj_path1': '/dataset/traj_linear_200.npy',
-        'head_path2': '/dataset/head_50m.npy',
+        'dataset': 'Wuhan',
+        'traj_path1': '/dataset/normalized_traj_200.npy',
+        'head_path2': '/dataset/normalized_head_50m.npy',
         'traj_length': 200,
         'channels': 2,
         'uniform_dequantization': False,

@@ -42,10 +42,10 @@ def main(config, logger, exp_dir):
     # Create the model
     unet = Guide_UNet(config).cuda()
     # print(unet)
-    traj = np.load('./dataset/traj_linear_200.npy',
+    traj = np.load('./dataset/normalized_traj_200.npy',
                    allow_pickle=True)
     traj = traj[:, :, :2]
-    head = np.load('./dataset/head_50m.npy',
+    head = np.load('./dataset/normalized_head_50m.npy',
                    allow_pickle=True)
     traj = np.swapaxes(traj, 1, 2)
     traj = torch.from_numpy(traj).float()
