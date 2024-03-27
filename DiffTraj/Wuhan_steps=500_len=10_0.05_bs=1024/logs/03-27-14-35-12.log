@@ -1,0 +1,21 @@
+***********************************
+Dataset: Wuhan
+Trajectory Length: 10
+Guidance scale: 3
+Number of steps: 500
+Beta_schedule: linear
+Beta_strat: 0.0001
+Beta_end: 0.05
+Epochs: 10
+batch_size: 1024
+***********************************
+<----Epoch-1---->
+<----Epoch-2---->
+<----Epoch-3---->
+<----Epoch-4---->
+<----Epoch-5---->
+<----Epoch-6---->
+<----Epoch-7---->
+<----Epoch-8---->
+<----Epoch-9---->
+<----Epoch-10---->
